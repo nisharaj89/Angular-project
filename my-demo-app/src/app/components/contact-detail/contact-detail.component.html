@@ -1,0 +1,90 @@
+<div class="container">
+  <div class="col-sm-12">
+    <div class="panel">
+        <div class="panel-body p-t-10" style="background: #eee;">
+          <div class="media-main text-left">
+            <div class="pull-right btn-group-sm"> 
+              <a class="btn btn-success tooltips" data-toggle="modal" (click)="onEditModalOpen()">   
+                <i class="glyphicon glyphicon-pencil"></i> 
+              </a> 
+              <a class="btn btn-danger tooltips" data-toggle="modal" data-target="#deleteModal"> 
+                <i class="glyphicon glyphicon-trash"></i> 
+              </a>
+            </div>
+            <div class="info">
+              <h4>{{contactData.name}}</h4>
+              <p class="text-muted">{{contactData.phone}}</p>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+          <hr style="border-top: solid 1px #ccc">
+          <ul class="social-links list-inline p-b-10">
+            <li style="width:80%;">
+              <h5>
+                <i class="glyphicon glyphicon-envelope"></i> 
+                <span class="">{{contactData.email}}</span>
+              </h5>
+            </li>
+            <li class="text-right">
+              <h5>
+                <i class="glyphicon glyphicon-time"></i> 
+                <span class="">3rd Jan 2017</span>
+              </h5>
+            </li>
+          </ul>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" #closeBtn data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+
+          <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" [(ngModel)]="editableContact.name" name = "name" class="form-control" id="fullName" placeholder="Enter Full Name" required="required">
+
+          </div>
+          <div class="form-group">
+            <label for="phoneNo">Phone No</label>
+            <input type="text" [(ngModel)]="editableContact.phone"  name="phone" class="form-control" id="phoneNo" placeholder="Enter Phone No" >
+          </div>
+          <div class="form-group">
+            <label for="email">E-Mail</label>
+            <input type="email" [(ngModel)]="editableContact.email" name="email" class="form-control" id="email" placeholder="Enter E-Mail">
+          </div>
+          <button type="submit" class="btn btn-primary"  (click)="onUpdate()">Edit Contact</button>
+
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        Are you sure wants to delete
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="onDelete()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
